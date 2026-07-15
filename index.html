@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Máy Tính Giảm Giá</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 300px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .input-group {
+            margin: 15px 0;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #764ba2;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f0f0f0;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .result p {
+            margin: 5px 0;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Máy Tính Giảm Giá</h1>
+        <div class="input-group">
+            <label>Nhập số tiền:</label>
+            <input type="number" id="amount" placeholder="VD: 50">
+        </div>
+        <div class="input-group">
+            <label>Chọn % giảm giá:</label>
+            <select id="discount" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                <option value="30">Giảm 30%</option>
+                <option value="40">Giảm 40%</option>
+            </select>
+        </div>
+        <button onclick="calculateDiscount()">Tính Toán</button>
+        <div class="result" id="result" style="display: none;">
+            <p>Giá gốc: <strong id="originalPrice">0</strong></p>
+            <p>Giảm: <strong id="discountAmount">0</strong></p>
+            <p style="color: green; font-size: 18px;">Giá sau giảm: <strong id="finalPrice">0</strong></p>
+        </div>
+    </div>
+
+    <script>
+        function calculateDiscount() {
+            const amount = parseFloat(document.getElementById('amount').value);
+            const discountPercent = parseFloat(document.getElementById('discount').value);
+            
+            if (isNaN(amount) || amount < 0) {
+                alert('Vui lòng nhập số tiền hợp lệ!');
+                return;
+            }
+            
+            const discountAmount = amount * (discountPercent / 100);
+            const finalPrice = amount - discountAmount;
+            
+            document.getElementById('originalPrice').textContent = amount.toFixed(0);
+            document.getElementById('discountAmount').textContent = discountAmount.toFixed(0);
+            document.getElementById('finalPrice').textContent = finalPrice.toFixed(0);
+            document.getElementById('result').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

@@ -206,7 +206,7 @@
             const lines = amounts.map(amount => {
                 const discountAmount = amount * (discountPercent / 100);
                 const finalPrice = amount - discountAmount;
-                return `<p class="result-line">• ${amount.toLocaleString('vi-VN')} → Giảm ${discountPercent}% = ${discountAmount.toLocaleString('vi-VN')} → Còn ${finalPrice.toLocaleString('vi-VN')}</p>`;
+                return `<p class="result-line">• ${amount.toLocaleString('vi-VN')} → ${finalPrice.toLocaleString('vi-VN')}</p>`;
             });
             
             document.getElementById('resultLines').innerHTML = lines.join('');

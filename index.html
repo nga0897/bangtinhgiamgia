@@ -209,6 +209,8 @@
                 return `<p class="result-line">• ${amount.toLocaleString('vi-VN')} → ${finalPrice.toLocaleString('vi-VN')}</p>`;
             });
             
+            document.getElementById('amount').value = '';
+            document.getElementById('amount').focus();
             document.getElementById('resultLines').innerHTML = lines.join('');
             document.getElementById('result').classList.add('show');
         }
